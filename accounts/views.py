@@ -271,6 +271,7 @@ class AuthView(APIView):
 
     def change_password(self, request):
         if not request.user.is_authenticated:
+            
             return Response({"error": "User not authenticated"}, status=status.HTTP_401_UNAUTHORIZED)
 
         serializer = ChangePasswordSerializer(data=request.data, context={"request": request})
